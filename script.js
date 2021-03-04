@@ -1,7 +1,19 @@
-fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
-  .then(data) => data.json())
-  .then((data2) => {
-      // do something with your data
+async function windowActions() {
+    console.log('window loaded');
+    const form = document.querySelector('.userform');
+    const search = document.querySelector('#city')
 
-      form.addEventListener
+    const request = await fetch('/api');
+    const data = await request.json();
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        console.log('submit fired', search.value)
+
+        const filtered = data.filter((record) => record.city.toUppercase() === search.value.toUpperCase());
+    });
+
+      search.addEventListener('input', (event) => {
+          console.log('input', event.target.value);
+      });
   })
