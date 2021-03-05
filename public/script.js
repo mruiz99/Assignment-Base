@@ -42,6 +42,7 @@ async function windowActions() {
     }
 
     function displayMatches(event) {
+        if (event.target.value.length > 0) {
         const matchArray = findMatches(event.target.value, data);
         const html = matchArray.map(place => {
             const regex = new RegExp(event.target.value, 'gi');
@@ -49,8 +50,8 @@ async function windowActions() {
             const stateName = place.state.replace(regex, '<span class="hl">${event.target.value}</span>')
             return `
             
-                <div class="column" style="background-image: linear-gradient(salmon, darkorange); width: 300px; margin-top: 25px;">
-                    <li>
+                <address class="column" style="background-image: linear-gradient(salmon, darkorange); width: 400px; margin-top: 25px;">
+                    <li style="font-family: Righteous; font-size: 18px;">
                         <span class="name">${place.name}</span>
                     </li>
                     <li>
@@ -65,12 +66,15 @@ async function windowActions() {
                     <li>
                         <span class="zipcode">${place.zip}</span>
                     </li>
-                </div>
+                </address>
             
             `;
         }).join('');
         console.log("SUGGESTIONS");
         suggestions.innerHTML = html;
+    } else {
+        suggestions.innerHTML = "";
+    }
     }
 
     

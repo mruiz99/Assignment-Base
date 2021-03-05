@@ -5,22 +5,24 @@
         <meta name="viewport" content="width=, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
-    <body style="display: block; height: auto; background-color: blue;">
+    <body>
 
-        <div class = "container is-max-desktop">
-            <div class="notification is-primary" style="height: auto;">
-                <div class = "content" > 
-                    <h1 style = "color: whitesmoke; text-align: center; margin-top: 100px;"> 
-                        <u>August Meyer and Miguel Ruiz's Assignment #2</u></h1>
+        <div>
+
+            <div class = "container" style="display: flex; flex-direction: column;">
+                <div class = "header" > 
+                    <h1 style = "color: whitesmoke; text-align: center; text-decoration: underline;"> 
+                        August Meyer and Miguel Ruiz's Assignment #2</h1>
                 </div>
-                <form action="/api" method="POST" class="userform" style="display: flex; width: 300px; 
-                margin-top: 70px; margin-left: auto; margin-right: auto;">
+                <form class="userform" style="width: 400px; margin-top: 70px;">
                     <input type="text" name="city" id="city" placeholder="Enter your city" style="background-color:white; 
-                    height: 50px; width: 300px;">
+                        height: 50px; width: 400px;">
                 </form>
-                <ul class="suggestions" style="display: flex; flex-direction: column; align-items: center;">
+                <ul class="suggestions">
                 </ul>
             </div>
         </div>
