@@ -18,16 +18,21 @@ async function windowActions() {
     });
 
 
-
-      //const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+    function unique(arr) {
+        let result = [];
+      
+        for (let thing of arr) {
+          if (!result.includes(thing)) {
+            result.push(thing);
+          }
+        }
+      
+        return result;
+      }
+      
   
-  
-      //fetch(endpoint)
-        //.then(blob => blob.json())
-        //.then(data => cities.push(...data))
-
+    
     function findMatches(wordToMatch, data) {
-        console.log("FINDMATCHES");
         return data.filter(place => {
             // here we need to figure out if the city or state 		// MATCHES what was searched
             const regex = new RegExp(wordToMatch, 'gi');
@@ -37,17 +42,31 @@ async function windowActions() {
     }
 
     function displayMatches(event) {
-        console.log("DISPLAYMATCHES");
         const matchArray = findMatches(event.target.value, data);
         const html = matchArray.map(place => {
             const regex = new RegExp(event.target.value, 'gi');
             const cityName = place.city.replace(regex, '<span class="hl">${event.target.value}</span>')
             const stateName = place.state.replace(regex, '<span class="hl">${event.target.value}</span>')
             return `
-                <li>
-                    <span class="name">${place.city}, $place.state}</span>
-                    <span class="population">${place.population}</span>
-                </li>
+            
+                <div class="column" style="background-color:darksalmon; width: 300px; margin-top: 25px;">
+                    <li>
+                        <span class="name">${place.name}</span>
+                    </li>
+                    <li>
+                        <span class="category">${place.category}</span>
+                    </li>
+                    <li>
+                        <span class="address">${place.address_line_1}</span>
+                    </li>
+                    <li>
+                        <span class="name">${place.city}, ${place.state}</span>
+                    </li>
+                    <li>
+                        <span class="zipcode">${place.zip}</span>
+                    </li>
+                </div>
+            
             `;
         }).join('');
         console.log("SUGGESTIONS");
@@ -56,10 +75,8 @@ async function windowActions() {
 
     
     search.addEventListener('change', displayMatches);
-    console.log("CHANGE");
     search.addEventListener('keyup', (evt) => { 
         displayMatches(evt)
-        console.log("KEYUP")
     });
 
 }
