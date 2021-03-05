@@ -6,7 +6,7 @@ async function windowActions() {
 
     const request = await fetch('/api');
     const data = await request.json();
-    console.log(data);
+
     search.addEventListener('input', (event) => {
         console.log('input', event.target.value);
     });
