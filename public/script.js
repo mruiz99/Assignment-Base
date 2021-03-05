@@ -1,4 +1,16 @@
 async function windowActions() {
+
+    const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+    const cities = [];
+
+
+    fetch(endpoint)
+      .then(blob => blob.json())
+      .then(data => cities.push(...data))
+
+    console.log(data)
+
+
     console.log('window loaded');
     const form = document.querySelector('.userform');
     const search = document.querySelector('#city')
@@ -16,4 +28,4 @@ async function windowActions() {
       search.addEventListener('input', (event) => {
           console.log('input', event.target.value);
       });
-  })
+  }
