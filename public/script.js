@@ -1,26 +1,36 @@
+//const { FetchError } = require("node-fetch");
+
 async function windowActions() { 
     console.log('window loaded');
 
     const form = document.querySelector('.userform');
     const search = document.querySelector('#city')
+    const suggestions = document.querySelector('.suggestions');
+    
 
-    const request = await fetch('/api');
-    const data = await request.json();
+    const results = [];
+    const request = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const data = await request.json()
+    
+    //console.log("INPUT", search);
+    console.log(data);
 
     search.addEventListener('input', (event) => {
         console.log('input', event.target.value);
     });
 
+
+
       //const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-      //const cities = [];
   
   
       //fetch(endpoint)
         //.then(blob => blob.json())
         //.then(data => cities.push(...data))
-  
-    function findMatches(wordToMatch, cities) {
-        return cities.filter(place => {
+
+    function findMatches(wordToMatch, data) {
+        console.log("FINDMATCHES");
+        return data.filter(place => {
             // here we need to figure out if the city or state 		// MATCHES what was searched
             const regex = new RegExp(wordToMatch, 'gi');
             //'g' means global, 'i' means case insensitive
@@ -29,12 +39,12 @@ async function windowActions() {
     }
 
     function displayMatches(event) {
-        alert("TEST")
-        const matchArray = findMatches(event.target.value, cities);
+        console.log("DISPLAYMATCHES");
+        const matchArray = findMatches(event.target.value, data);
         const html = matchArray.map(place => {
             const regex = new RegExp(event.target.value, 'gi');
-            const cityName = place.city.replace(regex, '<span class="hl">${this.value}</span>')
-            const stateName = place.state.replace(regex, '<span class="hl">${this.value}</span>')
+            const cityName = place.city.replace(regex, '<span class="hl">${event.target.value}</span>')
+            const stateName = place.state.replace(regex, '<span class="hl">${event.target.value}</span>')
             return `
                 <li>
                     <span class="name">${place.city}, $place.state}</span>
@@ -42,15 +52,17 @@ async function windowActions() {
                 </li>
             `;
         }).join('');
-        suggestions.innerHTML = html;	
+        console.log("SUGGESTIONS");
+        suggestions.innerHTML = html;
     }
+
     
-    const searchInput = document.querySelector('.userform');
-    const suggestions = document.querySelector('.textarea');
-    
-    searchInput.addEventListener('change', displayMatches);
-    searchInput.addEventListener('keyup', (evt) => { 
-        displayMatches(evt) });
+    search.addEventListener('change', displayMatches);
+    console.log("CHANGE");
+    search.addEventListener('keyup', (evt) => { 
+        displayMatches(evt)
+        console.log("KEYUP")
+    });
 
 }
 
