@@ -37,7 +37,7 @@ async function windowActions() {
             // here we need to figure out if the city or state 		// MATCHES what was searched
             const regex = new RegExp(wordToMatch, 'gi');
             //'g' means global, 'i' means case insensitive
-            return place.city.match(regex) || place.state.match(regex)
+            return place.city.match(regex);
         });
     }
 
@@ -50,8 +50,8 @@ async function windowActions() {
             const stateName = place.state.replace(regex, '<span class="hl">${event.target.value}</span>')
             return `
             
-                <address class="column" style="background-image: linear-gradient(salmon, darkorange); width: 400px; margin-top: 25px;">
-                    <li style="font-family: Righteous; font-size: 18px;">
+                <address class="column">
+                    <li>
                         <span class="name">${place.name}</span>
                     </li>
                     <li>

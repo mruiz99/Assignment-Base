@@ -1,4 +1,45 @@
+html {
+    background: blue;
+}
+
 body {
-    background: red;
+    background: blue;
     height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: whitesmoke;     
+    text-align: center; 
+    text-decoration: underline;
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+.fclass {
+    width: 400px; 
+    margin-top: 70px;
+    background-color:white; 
+    height: 50px;
+    justify-content: center;
+}
+
+input {
+    width: 400px;
+    height: 50px;
+}
+
+.column {
+    background-image: linear-gradient(salmon, red); 
+    width: 400px; 
+    margin-top: 25px;
+}
+
+li {
+    font-family: Righteous; 
+    font-size: 18px;
 }
