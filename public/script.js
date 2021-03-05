@@ -49,7 +49,7 @@ async function windowActions() {
             const stateName = place.state.replace(regex, '<span class="hl">${event.target.value}</span>')
             return `
             
-                <div class="column" style="background-color:darksalmon; width: 300px; margin-top: 25px;">
+                <div class="column" style="background-image: linear-gradient(salmon, darkorange); width: 300px; margin-top: 25px;">
                     <li>
                         <span class="name">${place.name}</span>
                     </li>
