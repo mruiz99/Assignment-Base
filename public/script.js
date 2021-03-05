@@ -1,5 +1,3 @@
-//const { FetchError } = require("node-fetch");
-
 async function windowActions() { 
     console.log('window loaded');
 
