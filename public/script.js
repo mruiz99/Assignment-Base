@@ -1,5 +1,5 @@
 async function windowActions() { 
-    console.log('window loaded');
+    //console.log('window loaded');
 
     const form = document.querySelector('.userform');
     const search = document.querySelector('#city')
@@ -11,7 +11,7 @@ async function windowActions() {
     const data = await request.json()
     
     //console.log("INPUT", search);
-    console.log(data);
+    //console.log(data);
 
     search.addEventListener('input', (event) => {
         console.log('input', event.target.value);
@@ -70,7 +70,7 @@ async function windowActions() {
             
             `;
         }).join('');
-        console.log("SUGGESTIONS");
+        //console.log("SUGGESTIONS");
         suggestions.innerHTML = html;
     } else {
         suggestions.innerHTML = "";
