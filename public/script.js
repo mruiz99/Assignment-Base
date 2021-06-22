@@ -2,7 +2,8 @@ async function windowActions() {
     //console.log('window loaded');
 
     const form = document.querySelector('.userform');
-    const search = document.querySelector('#city')
+    const search = document.querySelector('#city');
+    const submit = document.querySelector('#submit');
     const suggestions = document.querySelector('.suggestions');
     
 
